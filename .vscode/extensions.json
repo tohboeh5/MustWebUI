@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "github.copilot-chat",
+        "github.copilot",
+        "github.vscode-github-actions",
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "astral-sh.ty"
+    ]
+}
