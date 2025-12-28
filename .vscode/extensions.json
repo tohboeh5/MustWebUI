@@ -5,6 +5,7 @@
         "github.vscode-github-actions",
         "ms-python.python",
         "charliermarsh.ruff",
-        "astral-sh.ty"
+        "astral-sh.ty",
+        "ms-vscode.vscode-websearchforcopilot"
     ]
 }
