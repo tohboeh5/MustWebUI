@@ -3,7 +3,10 @@
         "github.copilot-chat",
         "github.copilot",
         "github.vscode-github-actions",
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker",
         "ms-python.python",
+        "ms-python.vscode-pylance",
         "charliermarsh.ruff",
         "astral-sh.ty",
         "ms-vscode.vscode-websearchforcopilot"

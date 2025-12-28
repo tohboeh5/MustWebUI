@@ -1,0 +1,20 @@
+{
+  "name": "MustWebUI (Python + uv)",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {}
+  },
+  "containerEnv": {
+    "UV_PROJECT_ENVIRONMENT": ".venv",
+    "UV_PYTHON_PREFERENCE": "only-system"
+  },
+  "postCreateCommand": "uv sync --dev",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+        "python.terminal.activateEnvironment": true
+      }
+    }
+  }
+}
