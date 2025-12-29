@@ -86,10 +86,10 @@ Policy options (configurable):
   - No implicit coercion is allowed.
 - **Coercion mode**:
   - A small, explicitly supported set of non-JSON types MAY be coerced:
-    - `datetime` / `date` / `time` 92 ISO 8601 strings.
-    - `UUID` 92 canonical string (e.g. `123e4567-e89b-12d3-a456-426614174000`).
-    - `Enum` 92 the enums value (typically a `str` or `int`).
-    - `Decimal` 92 decimal string representation.
+    - `datetime` / `date` / `time` → ISO 8601 strings.
+    - `UUID` → canonical string (e.g. `123e4567-e89b-12d3-a456-426614174000`).
+    - `Enum` → the enum's value (typically a `str` or `int`).
+    - `Decimal` → decimal string representation.
   - Any other non-JSON type that is not in the supported set above MUST be rejected with a clear error, even in coercion mode.
 
 ### 4.3 Field naming
