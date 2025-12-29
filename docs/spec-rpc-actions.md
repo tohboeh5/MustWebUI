@@ -138,8 +138,12 @@ Requirements:
 - `$api` MUST treat non-2xx as an error.
 - `$api` MUST return parsed JSON for 2xx responses.
 
-Recommended error shape (not stable API yet):
+Default shape (for the built-in `$api` helper) SHOULD be a tagged union discriminated by `kind`:
 - `{ kind: 'network' | 'http' | 'parse', status?: number, message?: string }`
+
+This shape is RECOMMENDED, not required:
+- Host integrations MAY use a different error shape, add extra fields, or introduce additional `kind` values, as long as they document the contract.
+- Callers that want to be portable across implementations MUST NOT assume this error shape is present unless explicitly advertised by the host.
 
 Initial recommended behavior:
 - Always run `finally` actions.

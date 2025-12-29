@@ -72,9 +72,25 @@ Correct usage is to pass the proxy as an expression:
 
 Client state MUST be JSON-compatible.
 
+For this spec, a **JSON-compatible value** is:
+- A primitive: `bool`, a finite `int`/`float` number, `str`, or `null` (Python `None`).
+- A list/array of JSON-compatible values.
+- An object/dict with **string keys** and JSON-compatible values.
+
+Any other Python value (for example `datetime`, `date`, `time`, `UUID`, `Decimal`,
+`Enum`, or arbitrary custom classes) is considered a **non-JSON type**.
+
 Policy options (configurable):
-- Strict mode (recommended): non-JSON types are rejected.
-- Coercion mode: selected types (e.g. `datetime`) are serialized to strings (ISO 8601).
+- **Strict mode (recommended)**:
+  - Any non-JSON type in the state MUST cause a clear error during compilation/serialization.
+  - No implicit coercion is allowed.
+- **Coercion mode**:
+  - A small, explicitly supported set of non-JSON types MAY be coerced:
+    - `datetime` / `date` / `time` 92 ISO 8601 strings.
+    - `UUID` 92 canonical string (e.g. `123e4567-e89b-12d3-a456-426614174000`).
+    - `Enum` 92 the enums value (typically a `str` or `int`).
+    - `Decimal` 92 decimal string representation.
+  - Any other non-JSON type that is not in the supported set above MUST be rejected with a clear error, even in coercion mode.
 
 ### 4.3 Field naming
 

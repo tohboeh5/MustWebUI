@@ -12,7 +12,7 @@ Requirements:
 
 Recommended approach:
 - Embed JSON into a non-executing script tag:
-	- `<script type="application/json" id="__mustwebui_state">{...}</script>`
+  - `<script type="application/json" id="__mustwebui_state">{...}</script>`
 - Parse via `JSON.parse(document.getElementById(...).textContent)`.
 
 Rationale:
@@ -36,7 +36,7 @@ Recommended:
 - SameSite cookies + CSRF token in a header.
 - The runtime `$api` helper SHOULD allow sending `X-CSRF-Token`.
 
-## 3. Authentication (Authn) / Authorization (Authz)
+## 3. Authentication / Authorization (Authn / Authz)
 
 Requirements:
 - MustWebUI MUST NOT mandate a specific auth system.
@@ -93,5 +93,7 @@ Requirements:
 - Alpine.js MUST be usable via CDN or self-hosting.
 
 Recommended:
-- Pin Alpine version in production (e.g. `alpinejs@3.15.3`).
+- Pin Alpine.js version in production:
+  - For npm/self-hosted builds, depend on a specific version (e.g. `"alpinejs": "3.15.3"` in `package.json`) and serve the bundled file from your own origin.
+  - For CDN delivery, use a fully qualified, versioned URL (e.g. `https://unpkg.com/alpinejs@3.15.3/dist/cdn.min.js` or the equivalent from your chosen CDN).
 - If using CSP, explicitly decide on an inline-script strategy.

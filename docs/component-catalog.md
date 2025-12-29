@@ -104,8 +104,8 @@ Within the `with ml.button(...) as btn:` block, the builder SHOULD provide:
 - `btn.call(func: Callable, *, data: BaseModel | dict, method: str = "POST") -> ResponseProxy`
   - Compiles to `const res = await $api(url, payload);` and returns a ResponseProxy that can be referenced in later actions.
 
-- `btn.finally_(fn: Callable[[], None] | None = None)` (optional)
-  - Allows structured cleanup. In the initial version, this may be internal-only and exposed later.
+- `btn.finally_(fn: Callable[[], None] | None = None)` (optional / phase 2)
+  - Allows structured cleanup. This is NOT required for the initial implementation and MAY be implemented or exposed in a later phase.
 
 ## Conditional rendering
 

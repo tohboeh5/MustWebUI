@@ -52,7 +52,14 @@ See [component-catalog.md](component-catalog.md) for signatures.
 Requirements:
 - `class_name` maps to `class`.
 - `attrs` keys/values map to raw HTML attributes.
-- When an attribute value is an Expr and is bindable, it MUST be emitted as a bound attribute (e.g. `:disabled`).
+- When an attribute value is an Expr and the attribute is *bindable*, it MUST be emitted as a bound attribute (e.g. `:disabled`).
+
+An attribute is considered *bindable* when at least one of the following is true:
+- It is a standard boolean or stateful HTML attribute whose semantics depend on runtime state (for example: `disabled`, `readonly`, `required`, `checked`, `selected`, `hidden`).
+- It is a value-like attribute on form controls where live state updates are expected (for example: `value`, `min`, `max`, `step`).
+- It is explicitly marked as bindable in the component definitions in [component-catalog.md](component-catalog.md).
+
+When an Expr is used as the value of a non-bindable attribute (for example: `class`, `id`, `name`, `style`, `data-*`, `aria-*`), the Expr MUST be evaluated to a string and emitted as a static attribute value (i.e. without a binding prefix such as `:`).
 
 ## 5. Rendering
 

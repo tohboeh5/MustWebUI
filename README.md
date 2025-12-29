@@ -52,8 +52,12 @@ def page(ml, state: AppState):
         res = btn.call(increment, data=IncrementIn(amount=1, current=state.count))
         btn.set(state.count, res.new_count)
         btn.set(state.loading, False)
-        # Note: MustWebUI compiles action sequences into `try/finally` when cleanup is implied,
+        # Note: MustWebUI compiles action sequences into JS with `try/finally` when cleanup is implied,
         # so UI state (e.g. loading flags) does not get stuck even if the RPC fails.
+        # Conceptual output:
+        #   loading = true;
+        #   try { const res = await $api(...); count = res.new_count; }
+        #   finally { loading = false; }
     return ml.render()
 ```
 
