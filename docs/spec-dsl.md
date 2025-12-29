@@ -76,5 +76,5 @@ Output modes (configurable):
 ## 6. Extensibility rules
 
 - Start small; expand only when a real UI requires it.
-- Styling is user-controlled (e.g. Tailwind classes via `class_name=`).
+- Styling is user-controlled (e.g.  classes via `class_name=`).
 - Avoid introducing a new theming/design system in MustWebUI.
