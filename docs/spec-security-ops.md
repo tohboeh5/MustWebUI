@@ -36,7 +36,7 @@ Recommended:
 - SameSite cookies + CSRF token in a header.
 - The runtime `$api` helper SHOULD allow sending `X-CSRF-Token`.
 
-## 3. Authn/Authz
+## 3. Authentication (Authn) / Authorization (Authz)
 
 Requirements:
 - MustWebUI MUST NOT mandate a specific auth system.

@@ -36,7 +36,7 @@ Proxies MUST support a minimal set of operations so that common UI expressions a
   - `state.count + 1` → `count + 1`
   - `state.count - 1` → `count - 1`
 - Comparisons:
-  - `state.loading == True` → `loading === true`
+  - `state.count == 0` → `count === 0`
   - `state.count >= 10` → `count >= 10`
 - Boolean ops:
   - `state.loading and state.count > 0` → `loading && (count > 0)`
@@ -74,7 +74,7 @@ Client state MUST be JSON-compatible.
 
 Policy options (configurable):
 - Strict mode (recommended): non-JSON types are rejected.
-- Coercion mode: selected types (e.g. `datetime`) are serialized to strings (ISO8601).
+- Coercion mode: selected types (e.g. `datetime`) are serialized to strings (ISO 8601).
 
 ### 4.3 Field naming
 

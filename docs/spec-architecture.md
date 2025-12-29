@@ -58,7 +58,7 @@ For any page, MustWebUI MUST be able to generate:
    - compiled event handlers.
 
 Requirements:
-- Initial state MUST come from `StateModel` defaults / factories.
+- Initial state MUST come from the state model's defaults / factories.
 - State embedding MUST be XSS-safe.
 
 ### 4.2 Local reactivity (no network)

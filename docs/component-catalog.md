@@ -60,7 +60,7 @@ Generated output:
 
 ## Form inputs
 
-### `ml.input(model: StateExpr, *, type="text", placeholder=None, disable_if=None, class_name=None, attrs=None)`
+### `ml.input(model: StateExpr, *, type="text", disable_if=None, placeholder=None, class_name=None, attrs=None)`
 
 - Purpose: bind an input to state.
 
@@ -128,7 +128,7 @@ Within the `with ml.button(...) as btn:` block, the builder SHOULD provide:
 - Purpose: anchor.
 - SPA navigation is out of scope; this is just `<a>`.
 
-## What’s explicitly not in the initial set
+## Items explicitly excluded from the initial set
 
 - Complex widgets (date pickers, rich text editors)
 - Client-side router

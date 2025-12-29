@@ -2,7 +2,7 @@
 
 Type-safe Python → Reactive UI.
 
-MustWebUI is a framework concept for building “fast-feeling” single-page apps using **only Python**, powered by **FastAPI** + **Pydantic**, with **SSR + Alpine.js** for lightweight client-side reactivity.
+MustWebUI is a framework concept for building “fast-feeling” SSR web applications with client-side reactivity (not full SPA navigation) using **only Python**, powered by **FastAPI** + **Pydantic**, with **SSR + Alpine.js** for lightweight client-side reactivity.
 
 This repository currently focuses on the **specification and design**. Implementation will follow the docs.
 
@@ -52,6 +52,8 @@ def page(ml, state: AppState):
         res = btn.call(increment, data=IncrementIn(amount=1, current=state.count))
         btn.set(state.count, res.new_count)
         btn.set(state.loading, False)
+        # Note: MustWebUI compiles action sequences into `try/finally` when cleanup is implied,
+        # so UI state (e.g. loading flags) does not get stuck even if the RPC fails.
     return ml.render()
 ```
 
