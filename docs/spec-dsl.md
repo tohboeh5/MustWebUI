@@ -54,6 +54,10 @@ Requirements:
 - `attrs` keys/values map to raw HTML attributes.
 - When an attribute value is an Expr and the attribute is *bindable*, it MUST be emitted as a bound attribute (e.g. `:disabled`).
 
+Explicit bindings (escape hatch):
+- If an `attrs` key is already an Alpine/Vue-style binding key (e.g. starts with `:` or `x-bind:`), MustWebUI MUST emit it as-is.
+	- This allows advanced customization such as `attrs={":class": <expr>}` without expanding the default bindable-attribute set.
+
 An attribute is considered *bindable* when at least one of the following is true:
 - It is a standard boolean or stateful HTML attribute whose semantics depend on runtime state (for example: `disabled`, `readonly`, `required`, `checked`, `selected`, `hidden`).
 - It is a value-like attribute on form controls where live state updates are expected (for example: `value`, `min`, `max`, `step`).
@@ -71,10 +75,15 @@ Requirements:
 
 Output modes (configurable):
 - fragment-only (embed into a host template)
-- full HTML document (includes Alpine and runtime helper)
+- full HTML document (includes Alpine and runtime helper, and Tailwind CSS by default)
+
+Responsibility split:
+- In fragment-only mode, MustWebUI MUST emit only the page fragment (no `<html>`, no `<head>`, no default page layout wrapper).
+- In full-document mode, MustWebUI MUST provide a minimal default document shell when `ui_preset="tailwind"`.
+  - This shell can be disabled (see [spec-architecture.md](spec-architecture.md)).
 
 ## 6. Extensibility rules
 
 - Start small; expand only when a real UI requires it.
-- Styling is user-controlled (e.g.  classes via `class_name=`).
-- Avoid introducing a new theming/design system in MustWebUI.
+- Styling is user-controlled (e.g. classes via `class_name=`), but MustWebUI MUST provide a battery-included default UI under a Tailwind preset.
+- Avoid introducing a bespoke theming/design system beyond providing default utility-class presets (Tailwind) and a switch to disable/replace them.

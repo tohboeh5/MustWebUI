@@ -92,8 +92,48 @@ Recommended:
 Requirements:
 - Alpine.js MUST be usable via CDN or self-hosting.
 
+- Tailwind CSS MUST be deliverable in a secure, CSP-compatible way.
+
+### 8.1 Delivery principles (normative)
+
+Requirements:
+- Production defaults MUST NOT require relaxing CSP to include `unsafe-inline` or `unsafe-eval` solely for dependency loading.
+- Dependencies MUST be pinnable to a specific version (or content hash) to avoid silent supply-chain changes.
+- The default delivery SHOULD be same-origin (self-hosted) for both JS and CSS.
+
+### 8.2 Self-hosted (recommended default)
+
 Recommended:
-- Pin Alpine.js version in production:
-  - For npm/self-hosted builds, depend on a specific version (e.g. `"alpinejs": "3.15.3"` in `package.json`) and serve the bundled file from your own origin.
-  - For CDN delivery, use a fully qualified, versioned URL (e.g. `https://unpkg.com/alpinejs@3.15.3/dist/cdn.min.js` or the equivalent from your chosen CDN).
-- If using CSP, explicitly decide on an inline-script strategy.
+- Serve Alpine.js and the MustWebUI runtime helper from the same origin as the app.
+- Serve a prebuilt Tailwind CSS file from the same origin as the app.
+- Include assets using `<script src="..." defer></script>` and `<link rel="stylesheet" href="...">`.
+
+Operational guidance:
+- Use cache-busting filenames (e.g. `app.<hash>.css`, `vendor.<hash>.js`).
+- Use long-lived caching for hashed assets (e.g. `Cache-Control: public, max-age=31536000, immutable`).
+
+### 8.3 CDN (allowed, explicit opt-in)
+
+Requirements:
+- CDN usage MUST be an explicit configuration choice.
+- CDN URLs MUST be versioned (no floating tags).
+
+Recommended:
+- Use Subresource Integrity (SRI) via `integrity="..."` and `crossorigin="anonymous"` for CDN-loaded assets.
+- Prefer reputable CDNs and minimize third-party origins.
+
+### 8.4 CSP notes (Alpine.js)
+
+Alpine.js commonly relies on dynamic code execution in its standard build.
+
+Recommendations:
+- If strict CSP is required, prefer the Alpine "CSP build" (or equivalent approach) so that pages do not need `script-src 'unsafe-eval'`.
+- Document the required CSP for the chosen Alpine delivery in the host integration.
+
+### 8.5 Tailwind CSS notes
+
+Requirements:
+- MustWebUI MUST NOT depend on browser-side Tailwind JIT/"play CDN" for production behavior.
+
+Recommended:
+- Generate Tailwind CSS at build time and ship the resulting static CSS file.

@@ -4,6 +4,8 @@ Type-safe Python → Reactive UI.
 
 MustWebUI is a framework concept for building “fast-feeling” SSR web applications with client-side reactivity (not full SPA navigation) using **only Python**, powered by **FastAPI** + **Pydantic**, with **SSR + Alpine.js** for lightweight client-side reactivity.
 
+In addition, MustWebUI is designed to be **battery-included for UI styling**: the HTML it generates SHOULD look good out of the box by shipping a Tailwind CSS-based default stylesheet and sensible default utility classes.
+
 This repository currently focuses on the **specification and design**. Implementation will follow the docs.
 
 ## Why MustWebUI

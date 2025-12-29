@@ -6,6 +6,20 @@ This directory contains the MustWebUI **specification**: a design-first set of d
 - Prereqs: FastAPI / Pydantic / Alpine.js
 - Goal: turn **Type-Safe Python to Reactive UI** into a concrete, testable contract
 
+## UI styling (Tailwind CSS: battery-included)
+
+This spec treats UI styling as a first-class deliverable.
+
+Requirements:
+- MustWebUI MUST be able to generate HTML that looks good out of the box without any user-authored CSS.
+- The default built-in styling MUST be based on Tailwind CSS utilities ("battery-included" experience).
+- Users MUST still be able to customize styling via `class_name=` and/or by disabling the default preset via configuration.
+
+Where this is specified:
+- The *page artifact contract* and dependency delivery live in [spec-architecture.md](spec-architecture.md).
+- The *default component class contract* lives in [component-catalog.md](component-catalog.md).
+- CSP/security implications for delivering Tailwind live in [spec-security-ops.md](spec-security-ops.md).
+
 ## Recommended reading order
 
 1. [spec-architecture.md](spec-architecture.md)
