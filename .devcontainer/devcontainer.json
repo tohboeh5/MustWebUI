@@ -8,7 +8,7 @@
     "UV_PROJECT_ENVIRONMENT": ".venv",
     "UV_PYTHON_PREFERENCE": "only-system"
   },
-  "postCreateCommand": "uv sync --dev",
+  "postCreateCommand": "uv sync --dev && uv run pre-commit install --install-hooks",
   "customizations": {
     "vscode": {
       "settings": {
