@@ -305,7 +305,7 @@ These are explicitly optional / phase-2 items and should not block the first end
 
 ## Target demo (integration acceptance)
 
-Once milestones 1–10 are complete, the README counter example (name + count + loading + typed RPC) should work as the primary integration acceptance:
+Once milestones 1–10 are complete, the core of the README counter example (name + count + loading + typed RPC) should work as the primary integration acceptance; the `disable_if=state.loading` convenience on the button is enabled in Milestone 11 and is not required for this demo:
 
 - `ml.text` / `ml.input` / `ml.button`
 - `btn.set` / `btn.call`
